@@ -123,7 +123,7 @@ The global chat service follows a microservices architecture deployed on cloud i
 
 #### One-on-One Message Flow Diagram:
 
-![One-on-One Message Flow Diagram](https://github.com/narmidm/system-design/blob/master/Global%20Chat%20Service%20Design/image4.png?raw=true)
+![One-on-One Message Flow Diagram](https://github.com/narmidm/system-design/blob/master/%20Global%20Chat%20Service%20Design/with%20aws%20services%20only/image4.png)
 
 
 ### Data Flow for Group Messaging
@@ -193,7 +193,7 @@ The global chat service follows a microservices architecture deployed on cloud i
 
 #### Group Message Flow Diagram:
 
-![Group Message Flow Diagram](https://github.com/narmidm/system-design/blob/master/Global%20Chat%20Service%20Design/image3.png?raw=true)
+![Group Message Flow Diagram](https://github.com/narmidm/system-design/blob/master/%20Global%20Chat%20Service%20Design/with%20aws%20services%20only/image3.png)
 
 ### Data Flow for Message Attachments
 - Message attachments (e.g., images, files) are stored in Amazon S3.
@@ -400,4 +400,4 @@ The global chat service follows a microservices architecture deployed on cloud i
 
 #### Sequence diagram illustrating the deployment process:
 
-![sequence diagram illustrating the deployment process for the chat service](https://github.com/narmidm/system-design/blob/master/Global%20Chat%20Service%20Design/image5.png?raw=true)
+![sequence diagram illustrating the deployment process for the chat service](https://github.com/narmidm/system-design/blob/master/%20Global%20Chat%20Service%20Design/with%20aws%20services%20only/image5.png)
