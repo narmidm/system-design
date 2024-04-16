@@ -99,37 +99,10 @@ This ensures that message retrieval is optimized for performance by first checki
   "content": "Hello, how are you?",
   "timestamp": "2024-04-16T12:00:00Z"
 }
-``` 
-
-#### One-on-One Message Flow Diagram:
-```mermaid
-sequenceDiagram
-    participant User1
-    participant ClientApp1
-    participant MessageService
-    participant Database
-    participant Kafka
-    participant ChatService
-    participant User2
-    participant ClientApp2
-    
-    User1 ->> ClientApp1: Initiates chat and sends message
-    ClientApp1 ->> MessageService: Send message request
-    MessageService ->> Database: Check for locally stored past messages
-    Database -->> MessageService: Past messages found
-    MessageService -->> ClientApp1: Send past messages
-    ClientApp1 ->> MessageService: Send message request
-    MessageService ->> Kafka: Publish message
-    Kafka -->> MessageService: Message persisted
-    MessageService -->> ChatService: New message notification
-    ChatService -->> User2: Real-time notification
-    User2 ->> ClientApp2: Receives real-time notification
-    ClientApp2 ->> ChatService: Requests message history
-    ChatService -->> Database: Retrieve past messages request
-    Database -->> MessageService: Retrieve past messages
-    MessageService -->> ChatService: Past messages
-    ChatService -->> ClientApp2: Send past messages
 ```
+#### One-on-One Message Flow Diagram:
+![One-on-One Message Flow Diagram](https://github.com/narmidm/system-design/blob/master/%20Global%20Chat%20Service%20Design/Cloud-Native%20way/image3.png)
+
 
 ### Data Flow for Group Messaging
 
@@ -178,35 +151,8 @@ By checking the local database first, we optimize the retrieval process and mini
 ```
 
 #### Group Message Flow Diagram:
-```mermaid
-sequenceDiagram
-    participant User1
-    participant ClientApp1
-    participant MessageService
-    participant Database
-    participant Kafka
-    participant ChatService
-    participant GroupMembers
-    participant ClientApp2
-    
-    User1 ->> ClientApp1: Initiates group message
-    ClientApp1 ->> MessageService: Send group message request
-    MessageService ->> Database: Check for locally stored past group messages
-    Database -->> MessageService: Past group messages found
-    MessageService -->> ClientApp1: Send past group messages
-    ClientApp1 ->> MessageService: Send group message request
-    MessageService ->> Kafka: Publish message
-    Kafka -->> MessageService: Message persisted
-    MessageService -->> ChatService: New group message notification
-    ChatService -->> GroupMembers: Real-time notification
-    GroupMembers ->> ClientApp2: Receives real-time notification
-    ClientApp2 ->> ChatService: Requests group message history
-    ChatService -->> Database: Retrieve past group messages request
-    Database -->> MessageService: Retrieve past group messages
-    MessageService -->> ChatService: Past group messages
-    ChatService -->> ClientApp2: Send past group messages
+![Group Message Flow Diagram](https://github.com/narmidm/system-design/blob/master/%20Global%20Chat%20Service%20Design/Cloud-Native%20way/image2.png)
 
-```
 
 ### Data Flow for Message Attachments
 - Message attachments (e.g., images, files) are stored in a cloud-native object storage service.
@@ -417,36 +363,7 @@ sequenceDiagram
 - **Configuration:** Set up Kafka clusters for message streaming and persistence.
 
 ### Sequence Diagram for Deployment (Updated)
-```mermaid
-sequenceDiagram
-    participant Developer
-    participant DeploymentService
-    participant KafkaCluster
-    participant AuthenticationService
-    participant MessageService
-    participant GroupManagementService
-    participant EncryptionService
-    participant Database
-    participant ObjectStorage
-    participant ClientApplication
-    
-    Developer ->> DeploymentService: Deploy microservices
-    DeploymentService ->> KafkaCluster: Setup Kafka clusters
-    DeploymentService ->> AuthenticationService: Deploy Authentication Service
-    DeploymentService ->> MessageService: Deploy Message Service
-    DeploymentService ->> GroupManagementService: Deploy Group Management Service
-    DeploymentService ->> EncryptionService: Deploy Encryption Service
-    MessageService ->> Database: Store and retrieve messages
-    MessageService ->> KafkaCluster: Publish messages
-    GroupManagementService ->> Database: Store and retrieve group data
-    GroupManagementService ->> KafkaCluster: Publish group-related events
-    ClientApplication ->> KafkaCluster: Subscribe to relevant topics
-    ClientApplication ->> MessageService: Send and receive messages
-    ClientApplication ->> GroupManagementService: Manage group memberships
-    MessageService ->> ObjectStorage: Store message attachments
-    ClientApplication ->> ObjectStorage: Retrieve message attachments
-```
-![sequence diagram illustrating the deployment process for the chat service](https://github.com/narmidm/system-design/blob/master/%20Global%20Chat%20Service%20Design/without%20cloud/image5.png)
+![sequence diagram illustrating the deployment process for the chat service](https://github.com/narmidm/system-design/blob/master/%20Global%20Chat%20Service%20Design/Cloud-Native%20way/image1.png)
 
 ## Real-time Communication Options
 
