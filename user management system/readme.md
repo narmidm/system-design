@@ -360,4 +360,4 @@ Each microservice will have its own Deployment and Service defined in YAML files
 
 The communication between microservices can be achieved through Kubernetes services. Each microservice will have its own service defined, which other microservices can use to access it. Kubernetes provides built-in DNS for service discovery, allowing microservices to communicate with each other using their service names.
 
-![Detailed Flow Diagrams for User Management System](https://github.com/namridm/system-design/blob/master/image1.png?raw=true)
+![Detailed Flow Diagrams for User Management System](https://github.com/narmidm/system-design/blob/master/user%20management%20system/image1.png?raw=true)
